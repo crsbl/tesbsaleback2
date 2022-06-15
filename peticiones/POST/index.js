@@ -2,8 +2,7 @@ const buscarProducto = (req, res, connectionr) => {
     console.log("dentro de buscar");
   
     connectionr.getConnection(function (err, connection) {
-      if (err) throw err; // not connected!
-      // Use the connection
+      if (err) throw err; 
   
       let datos = "";
       req.on("data", (chunk) => {
@@ -29,10 +28,10 @@ const buscarProducto = (req, res, connectionr) => {
   
             let datafilter = JSON.parse(JSON.stringify(results));
   
-            let asd = datafilter.filter(
-              (asd) => asd.category === datosBuscar.filtro
+            let filtroCategorias = datafilter.filter(
+              (filtroCategorias) => filtroCategorias.category === datosBuscar.filtro
             );
-            console.log("filter", asd);
+            console.log("filter", filtroCategorias);
             let pagina = datosBuscar.pagina * 8;
             let resultadoFiltrado = null;
             switch (datosBuscar.OrdenarPor) {
@@ -89,13 +88,8 @@ const buscarProducto = (req, res, connectionr) => {
             });
             res.write(JSON.stringify([resultadoFiltrado, results.length]));
             res.end();
-            // When done with the connection, release it.
             connection.release();
-  
-            // Handle error after the release.
             if (error) throw error;
-  
-            // Don't use the connection here, it has been returned to the pool.
           }
         );
       });

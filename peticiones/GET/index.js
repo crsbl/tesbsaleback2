@@ -1,8 +1,8 @@
 exports.productosDatos = (res, connectionr) => {
   connectionr.getConnection(function (err, connection) {
-    if (err) throw err; // not connected!
+    if (err) throw err;
 
-    // Use the connection
+
     connection.query(
       `SELECT * FROM product  `,
       function (error, results, fields) {
@@ -12,13 +12,13 @@ exports.productosDatos = (res, connectionr) => {
         });
         res.write(JSON.stringify([results.slice(0, 8), results.length]));
         res.end();
-        // When done with the connection, release it.
+     
         connection.release();
 
-        // Handle error after the release.
+   
         if (error) throw error;
 
-        // Don't use the connection here, it has been returned to the pool.
+   
       }
     );
   });
@@ -27,9 +27,8 @@ exports.productosDatos = (res, connectionr) => {
 exports.filtroDatos = (res, connectionr) => {
 
     connectionr.getConnection(function (err, connection) {
-    if (err) throw err; // not connected!
+    if (err) throw err; 
 
-    // Use the connection
     connection.query(
       "SELECT * FROM category",
       function (error, results, fields) {
@@ -40,13 +39,11 @@ exports.filtroDatos = (res, connectionr) => {
         console.log(results);
         res.write(JSON.stringify(results));
         res.end();
-        // When done with the connection, release it.
+   
         connection.release();
 
-        // Handle error after the release.
         if (error) throw error;
 
-        // Don't use the connection here, it has been returned to the pool.
       }
     );
   });

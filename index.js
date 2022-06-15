@@ -1,7 +1,5 @@
 const { createServer } = require("http");
 
-/* const peticionesPost = require("/peticiones/POST/index");  */
-
 const httpServer =  createServer((req, res) => {
     const peticiones = require("./peticiones/index.js");
 console.log(req.method);
