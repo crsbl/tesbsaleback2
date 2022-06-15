@@ -1,14 +1,14 @@
 const { createServer } = require("http");
-/* const peticionesGet = require("/peticiones/Get/index");
-const peticionesPost = require("/peticiones/POST/index"); */
+
+/* const peticionesPost = require("/peticiones/POST/index");  */
 
 const httpServer =  createServer((req, res) => {
-
+    const peticiones = require("/peticiones/Get/index");
 console.log(req.method);
 
   switch (req.method) {
     case 'GET':
-  /*     peticionesGet(req, res) */
+        peticiones.peticionesGet(req, res);
       break;
       case 'POST':
    /*      peticionesPost(req, res) */
@@ -23,4 +23,4 @@ console.log(req.method);
 
 });
 
-httpServer.listen(process.env.PORT || 3001, ()=>{console.log('escuchando')});
+httpServer.listen(process.env.PORT || 3001, ()=>{console.log('.......')});
