@@ -11,7 +11,7 @@ console.log(req.method);
         peticiones.peticionesGet(req, res);
       break;
       case 'POST':
-   /*      peticionesPost(req, res) */
+        peticiones.peticionesPost(req, res);
       break;
       case 'OPTIONS':
    res.write(200);
