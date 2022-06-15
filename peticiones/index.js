@@ -17,7 +17,7 @@ exports.peticionesGet = (req, res) => {
 
     case "/filtroDatos":
         console.log('filtroDatos...');
-        res.end();
+        peticion.filtroDatos(res, connection);
       break;
 
     default:
